@@ -1,0 +1,8 @@
+{
+  "name": "eslint-config-nerdery-base",
+  "version": "1.0.0",
+  "description": "Nerdery's base JS ESLint config",
+  "main": ".eslintrc.js",
+  "author": "Nerdery",
+  "license": "MIT"
+}
