@@ -6,7 +6,18 @@ module.exports = {
     // 'import/order': {} // TODO
     'import/prefer-default-export': 0, // Allow single named exports to prevent unnecessary refactors
     'arrow-body-style': 0, // Disabled. Just because you *can* make something a one-liner, doesn't mean you should.
-    // 'prefer-destructuring': {} // TODO
+    'prefer-destructuring': ['error', { // Only prefer destructuring for `const { a } = obj;` (instead of `const a = obj.a`). Arrays and reassignments are left up to developer discretion.
+      VariableDeclarator: {
+        array: false,
+        object: true,
+      },
+      AssignmentExpression: {
+        array: false,
+        object: false,
+      },
+    }, {
+      enforceForRenamedProperties: false,
+    }],
     'no-continue': 0, // Allow continues. They can be used like an early return to increase readability.
     'no-plusplus': 0, // Allow ++ and --. The rationale for using this rule is that the operators are susceptible to automatic semicolon insertion issues, but that's an unlikely problem to run into.
     'object-curly-newline': 0, // Disabled to leave up to developer discretion
@@ -38,9 +49,6 @@ module.exports = {
     'import/dynamic-import-chunkname': 2, // TODO: Test this
     'complexity': [1, 20], // Warn when code becomes too complex
     'no-implicit-coercion': 2, // Disallows shorthand type conversions
-    // 'no-invalid-this': {} // TODO
-    // 'no-unreachable-loop': {} // TODO
-    // 'no-restricted-exports': {} // TODO
     // 'sort-imports': {} // TODO
   },
 };
