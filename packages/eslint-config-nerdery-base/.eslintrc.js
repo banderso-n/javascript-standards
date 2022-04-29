@@ -3,8 +3,6 @@ module.exports = {
     'max-params': [2, 5], // Disallow more than 5 parameters
     'no-implicit-coercion': 2, // Disallow type conversion with shorter notations
     'class-methods-use-this': 0, // Allow class instance methods that don't use `this` to prevent unnecessary refactors
-    'import/order': ['error', { alphabetize: { order: 'asc' } }],
-    'import/prefer-default-export': 0, // Allow single named exports to prevent unnecessary refactors
     'arrow-body-style': 0, // Disabled. Just because you *can* make something a one-liner, doesn't mean you should.
     'prefer-destructuring': ['error', { // Only prefer destructuring for `const { a } = obj;` (instead of `const a = obj.a`). Arrays and reassignments are left up to developer discretion.
       VariableDeclarator: {
@@ -45,10 +43,16 @@ module.exports = {
     'function-call-argument-newline': 0, // Leave up to developer discretion
     'max-depth': [1, 4], // Warn when blocks are nested too deeply
     'max-lines': [1, 500], // Warn when files become too long
+    'complexity': [1, 20], // Warn when code becomes too complex
+    'no-implicit-coercion': 2, // Disallow shorthand type conversions
+
+    'import/prefer-default-export': 0, // Allow single named exports to prevent unnecessary refactors
     'import/no-default-export': 2, // Mixing default and named exports is unnecessary and can be confusing. This is a contentious topic though. Feel free to override this in your own config.
     'import/dynamic-import-chunkname': 2, // If you're not using webpack or don't care about dynamically imported modules' filenames, feel free to disable this
-    'complexity': [1, 20], // Warn when code becomes too complex
-    'no-implicit-coercion': 2, // Disallows shorthand type conversions
+
+    // By default, we enforce sorting imports to simplify git history and make it easier when scanning for a specific import.
+    // It shouldn't cause too much trouble since it's auto-fixable, but if you find this to be more trouble than it's worth, feel free to disable these.
+    'import/order': ['error', { alphabetize: { order: 'asc' } }],
     'sort-imports': ['error', {
       ignoreDeclarationSort: true, // handled by import/order
       ignoreMemberSort: false,
